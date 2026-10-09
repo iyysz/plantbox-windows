@@ -1,0 +1,77 @@
+{
+  "name": "dafeng-smart-warehouse",
+  "private": true,
+  "version": "1.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "node --experimental-strip-types --test src/*.test.ts src/data/*.test.ts server/*.test.ts",
+    "server": "node --env-file-if-exists=.env server/index.ts",
+    "seed": "node --env-file-if-exists=.env server/seed.ts",
+    "dev:full": "node scripts/dev.mjs",
+    "electron:dev": "electron .",
+    "electron:build": "npm run build && electron-builder --win portable --x64",
+    "electron:pack": "npm run build && electron-packager . DafengSmartWarehouse --platform=win32 --arch=x64 --out=release --overwrite --asar --ignore=\"^/(src|docs|benchmarks|server|scripts|release|\\\\.git)(/|$)\""
+  },
+  "dependencies": {
+    "@dimforge/rapier3d-compat": "0.12.0",
+    "@react-three/drei": "^10.7.6",
+    "@react-three/fiber": "^9.4.0",
+    "@react-three/postprocessing": "^3.0.4",
+    "lucide-react": "^0.468.0",
+    "postprocessing": "^6.38.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "three": "^0.180.0",
+    "zustand": "^5.0.8"
+  },
+  "devDependencies": {
+    "@electron/packager": "^18.4.4",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "@types/three": "^0.180.0",
+    "@vitejs/plugin-react": "^5.0.4",
+    "electron": "^37.10.3",
+    "electron-builder": "^26.15.3",
+    "typescript": "^5.9.3",
+    "vite": "^7.1.9"
+  },
+  "engines": {
+    "node": ">=24.14.0"
+  },
+  "main": "electron/main.cjs",
+  "productName": "达丰智慧仓储",
+  "description": "达丰智慧仓储桌面演示",
+  "author": "达丰智慧仓储",
+  "build": {
+    "appId": "com.dafeng.smartwarehouse",
+    "productName": "达丰智慧仓储",
+    "directories": {
+      "output": "release",
+      "buildResources": "electron"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/main.cjs",
+      "package.json"
+    ],
+    "asar": true,
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "artifactName": "Dafeng-Smart-Warehouse-${version}-portable.${ext}"
+    },
+    "portable": {
+      "artifactName": "Dafeng-Smart-Warehouse-portable.exe"
+    }
+  }
+}

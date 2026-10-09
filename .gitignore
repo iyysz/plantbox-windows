@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+
+# Build output and caches
+dist/
+*.tsbuildinfo
+.vite/
+
+# Local environment; keep sanitized examples and templates versioned
+.env
+.env.*
+!.env.example
+!.env.*.example
+!.env.template
+!.env.*.template
+
+# Logs and test reports
+*.log
+coverage/
+test-results/
+playwright-report/
+
+# OS metadata and editor temporary files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Local warehouse database (including SQLite journal/WAL files)
+/data/
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# Electron / Windows packaging output (keep sources; ignore binaries)
+release/
+*.exe
